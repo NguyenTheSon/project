@@ -1,0 +1,22 @@
+<!-- SLIDE SHOW-->
+<script>
+$(document).ready(function(e) {
+    $('#adv').slides();
+});
+</script>
+<div id="adv" data-skip="false" data-auto="2000" data-autostop="false" data-loop="true" >
+    <ul class="carousel">
+        <li class="slide"><img src="{$config.url}{$config.dirtemp}images/1.jpg" width="580" height="300" alt="midu 1"></li>
+        <li class="slide"><img src="{$config.url}{$config.dirtemp}images/2.jpg" width="580" height="300" alt="midu 2"></li>
+        <li class="slide"><img src="{$config.url}{$config.dirtemp}images/3.jpg" width="580" height="300" alt="midu 3"></li>
+        <li class="slide"><img src="{$config.url}{$config.dirtemp}images/4.jpg" width="580" height="300" alt="midu 4"></li>
+        <li class="slide"><img src="{$config.url}{$config.dirtemp}images/5.jpg" width="580" height="300" alt="midu 5"></li>
+    </ul>
+</div>
+<!--END SLIDE SHOW-->
+<!-- PRODUCT-->
+<div class="box w578">
+    <h3 class="headbox">Sản phẩm bán chạy</h3>
+    {include file="listsp.html" danhsach=$banchay}
+</div>
+<!-- END PRODUCT-->

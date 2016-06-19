@@ -1,0 +1,12 @@
+<ul class="product">
+ {foreach $danhsach as $sp}
+    <li>
+        <p class="img">
+        <a href="{$config.url}{$sp.idcate}/{$sp.id}/{str_replace(' ','-',$sp.title)}.html" title="{$sp.title}">
+        <img src="{$sp.img}" title="{$sp.title}" alt="{$sp.title}"></a></p>
+        <h2><a href="{$config.url}{$sp.idcate}/{$sp.id}/{str_replace(' ','-',$sp.title)}.html" title="{$sp.title}">{$sp.title}</a></h2>
+        <p class="newprice">{$sp.price|number_format} VND</p>
+        <p class="order"><a href="{$config.url}order/{$sp.id}/{str_replace(' ','-',$sp.title)}.html">Đặt mua</a></p>
+    </li>
+  {/foreach}  
+</ul>

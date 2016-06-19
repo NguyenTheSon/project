@@ -1,0 +1,28 @@
+<div class="col-md-2">
+	<ul>
+    {foreach $listyear as $year}
+	<li><input class="choice" type="checkbox" value="{$year}" {if $year==date('Y')-1} checked {/if}>{$year}</li>
+    {/foreach}
+    </ul>
+</div>
+<div class="col-md-10"><img src="draw.php" id="mychart"></div>
+
+<script>
+$(document).ready(function(e) {
+    var listyear=["{date('Y')-1}"];//Mảng 
+	$('.choice').click(function(e) {
+        var stt=this.checked;
+		var val=$(this).val();
+		if(stt==true){
+			listyear.push(val);
+		}else{
+			for(key in listyear)
+			{
+				if(listyear[key]==val) listyear.splice(key, 1);
+			}
+		}
+		$('#mychart').attr('src','draw.php?year='+listyear);
+    });
+});
+
+</script>	

@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteRule ^(\w+).html index.php?prog=$1
+RewriteRule ^(\d+)/(\d+)/(.+).html  index.php?prog=detail&id=$2
+RewriteRule ^order/(\d+)/(.+).html  index.php?prog=order&id=$1
+RewriteRule ^(\d+)/([a-z0-9]+).html  index.php?prog=active&id=$1&code=$2
+
+

@@ -1,0 +1,8 @@
+url=http://localhost/project/
+dirtemp=templates/blue/
+titleadmin=Trang quản trị
+server=mysql
+host=localhost
+user=root
+pass=
+db=php0615e

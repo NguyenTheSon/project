@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Quản trị</title>
+<link rel="stylesheet" type="text/css" href="{$config.url}templates/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{$config.url}templates/css/bootstrap-theme.min.css">
+<script src="{$config.url}templates/js/jquery-1.11.3.min.js"></script>
+<script src="{$config.url}templates/js/bootstrap.min.js"></script>
+<script src="{$config.url}tinymce/tinymce.min.js"></script>
+<script src="{$config.url}templates/js/ajaxupload.3.5.js"></script>
+<script>tinymce.init({ selector:'textarea' });
+
+</script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Trang chủ</a> </li>
+        {foreach $menu as $mn}
+        {if $mn.parent==0}
+        {if $mn.prog!=''}
+        	<li><a href="index.php?prog={$mn.prog}">{$mn.title}</a> </li>
+        {else}
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{$mn.title}<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+            	{foreach $menu as $sub}
+                    {if $sub.parent==$mn.id}
+                    	<li><a href="{if $sub.prog!=''}index.php?prog={$sub.prog}{/if}">{$sub.title}</a> </li>
+                    {/if}
+                {/foreach}
+            </ul>
+        </li>
+        {/if}
+        {/if}
+        {/foreach}
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    {include file=$prog|cat:'.html' }
+</div>
+
+</body>
+</html>

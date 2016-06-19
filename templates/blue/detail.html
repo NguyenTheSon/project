@@ -1,0 +1,43 @@
+<!-- PRODUCT-->
+<div class="box w578">
+    <h3 class="headbox">Chi tiết sản phẩm</h3>
+    {if isset($detail) && $detail}
+   	<div class="detailpro">
+        <h1 class="title">{$detail.title}</h1>
+        <h2 class="price">Giá bán : {$detail.price|number_format} VND</h2>
+        <p class="order"><a href="{$config.url}index.php?prog=order&id={$detail.id}">Đặt mua</a></p>
+        <p class="img">
+       <a href="#"> <img src="{$detail.img}" id="imgshow"></a></p>
+        
+<div id="album" style="display:none">
+{$list=explode(';',$detail.album)}      
+{foreach $list as $ab}
+{if $ab!=''}
+<a href="{$config.url}upload/{$ab}" rel="group"><img src="{$config.url}upload/{$ab}"></a>
+{/if}
+{/foreach}
+</div>
+<script>
+$(document).ready(function(e) {
+    $('#imgshow').click(function(e) {
+      $('#album').find('a:first-child').click()
+    });
+});
+</script>
+        <p>Số lượng : {if $detail.soluong>0}Còn hàng{else}Hết hàng{/if}</p>
+        <p>Xuất xứ : {$detail.xuatxu}</p>
+        <p>Tình trạng : {if $detail.tinhtrang==1}Hàng mới{else}Hàng cũ{/if}</p>
+        <p>Lượt xem : {$detail.view}</p>
+        <div>{$detail.mota}</div>
+    </div>
+    {/if}
+</div> 
+<!-- END PRODUCT-->
+{if $daxem|count >0}
+<!-- PRODUCT Đã Xem-->
+<div class="box w578">
+    <h3 class="headbox">Sản phẩm đã xem</h3>
+    {include file="listsp.html" danhsach=$daxem}
+</div>
+<!-- END PRODUCT Đã Xem-->
+{/if}

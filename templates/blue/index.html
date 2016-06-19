@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="{$config.url}{$config.dirtemp}css/style.css">
+<link rel="stylesheet" type="text/css" href="{$config.url}{$config.dirtemp}css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="{$config.url}{$config.dirtemp}fancybox/jquery.fancybox-1.3.1.css">
+<script src="{$config.url}{$config.dirtemp}js/jquery-1.7.2.min.js"></script>
+<script src="{$config.url}{$config.dirtemp}js/slideshow.js"></script>
+<script src="{$config.url}{$config.dirtemp}js/jquery-ui.js"></script>
+<script src="{$config.url}{$config.dirtemp}fancybox/jquery.fancybox-1.3.1.js"></script>
+<script>
+$(document).ready(function(e) {
+  $("a[rel=group]").fancybox();
+});
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="bg">
+    	<!-- HEADER-->
+        <header id="header">
+        	<!-- MENU TOP -->
+            <div class="top">
+            	<div class="topcontent">
+                	<p>Buyplus sự lựa chọn hoàn hảo</p>
+                    <ul>
+						<li><a href="{$config.url}">Trang chủ</a></li>
+                    	<li><a href="{$config.url}index.php?prog=news">Tin tức</a></li>
+                        <li><a href="#">Trợ giúp</a></li>
+                    	<li><a href="#">Hỗ trợ</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    	<li><a href="#">Site map</a></li>
+                        <li><a href="#">Diễn đàn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- END MENU TOP -->
+            <!--BANNER-->
+            <div class="banner">
+            	<h1><a href="#">Buyplus.vn</a></h1>
+                <div class="boxsearch">
+                	<form id="frmsearch" action="{$config.url}index.php" method="get">
+                    	<input type="hidden" name="prog" value="product">
+                    	<input type="text" name="k" id="txtkey" >
+                        <button type="submit" class="btn" >Tìm kiếm </button>
+                    </form>
+<script>
+$(document).ready(function(e) {
+$('#txtkey').keyup(function(e) {
+	$('.centersite').html('<div class="loading"><img src="{$config.url}{$config.dirtemp}images/loading.gif" width="32" height="32"><img src="{$config.url}{$config.dirtemp}images/loading.gif" width="32" height="32"><img src="{$config.url}{$config.dirtemp}images/loading.gif" width="32" height="32"><img src="{$config.url}{$config.dirtemp}images/loading.gif" width="32" height="32"></div>');
+	$.get('{$config.url}ajaxsearch.php', $('#frmsearch').serialize(),function(data){
+		$('.centersite').html(data);
+	});
+
+});
+});
+</script>
+                </div>
+            </div>
+            <!--END BANNER-->
+            <!--BOX LOGIN-->
+            <div class="boxlogin">
+            	<div class="contentlogin">
+                	<!--MENU-->
+                    <ul>
+                    	<li><a href="{$config.url}">Trang chủ</a></li>
+                        <li><a href="{$config.url}about.html">Giới thiệu</a></li>
+                        <li><a href="{$config.url}product.html">Sản phẩm mới</a></li>
+                        <li><a href="#">Sản phẩm tiêu biểu</a></li>
+                        <li><a href="{$config.url}order.html">Giỏ hàng</a></li>
+                    </ul>
+                    <!--END MENU-->
+                	<form method="post">
+                    	<p>Tài khoản</p> <input type="text">
+                        <p>Mật khẩu </p> <input type="password">
+                        <p><input type="checkbox" value="1"> Nhớ mật khẩu</p>
+                        <button type="submit" class="btn">Đăng nhập</button>
+                        <p><a href="#">Quên mật khẩu</a><a href="{$config.url}reg.html">Đăng ký tài khoản</a></p>
+                    </form>
+                </div>
+            </div>
+            <!-- END BOX LOGIN-->
+        </header>
+    	<!--END HEADER-->
+        <!--LEFT -->
+        <div class="leftsite">
+        	<div class="box w198">
+            	<h3 class="headbox">Danh mục sản phẩm</h3>
+                {$lib->viewcate()}
+            </div>
+            <p><a href="#"><img src="{$config.url}{$config.dirtemp}images/adv1.png" width="200" height="150"></a></p>
+            <p><a href="#"><img src="{$config.url}{$config.dirtemp}images/adv2.png" width="200" height="150"></a></p>
+            <!-- Lượt truy cập-->
+            <div class="box w198">
+            	<h3 class="headbox">Thống kê truy cập</h3>
+                <div style="padding:10px;">
+              	 <p> Lượt truy cập: {$lib->getcount()}</p>
+               	 <p> Đang trực tuyến: {$lib->getcount(false)}</p>
+                </div>
+            </div>
+            <!--END Lượt truy cập-->
+        </div>
+        <!--END LEFT -->
+        <!--CENTER -->
+        <div class="centersite">
+       	{if isset($temp)}{include file=$temp}{/if}
+        </div>
+        <!--END CENTER -->
+        <!--RIGHT -->
+        <div class="rightsite">
+            <p><a href="#"><img src="{$config.url}{$config.dirtemp}images/adv1.png" width="200" height="150"></a></p>
+            <p><a href="#"><img src="{$config.url}{$config.dirtemp}images/adv2.png" width="200" height="150"></a></p>
+        	<div class="box w198">
+            	<h3 class="headbox">Tin tức mới</h3>
+                <ul class="news">
+                	<li>
+                    	<a href="#">
+                        	<img src="{$config.url}{$config.dirtemp}images/pro.png" width="44" height="44">
+                        	<span>Apple chính thức ra mắt Iphone 10 phiên bản 50TB</span>
+                        </a>
+                    </li>
+                    <li>
+                    	<a href="#">
+                        	<img src="{$config.url}{$config.dirtemp}images/pro.png" width="44" height="44">
+                        	<span>Apple chính thức ra mắt Iphone 10 phiên bản 50TB</span>
+                        </a>
+                    </li>
+                    <li>
+                    	<a href="#">
+                        	<img src="{$config.url}{$config.dirtemp}images/pro.png" width="44" height="44">
+                        	<span>Apple chính thức ra mắt Iphone 10 phiên bản 50TB</span>
+                        </a>
+                    </li>
+                    <li>
+                    	<a href="#">
+                        	<img src="{$config.url}{$config.dirtemp}images/pro.png" width="44" height="44">
+                        	<span>Apple chính thức ra mắt Iphone 10 phiên bản 50TB</span>
+                        </a>
+                    </li>
+                    <li>
+                    	<a href="#">
+                        	<img src="{$config.url}{$config.dirtemp}images/pro.png" width="44" height="44">
+                        	<span>Apple chính thức ra mắt Iphone 10 phiên bản 50TB</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <p><a href="#"><img src="{$config.url}{$config.dirtemp}images/adv1.png" width="200" height="150"></a></p>
+            <p><a href="#"><img src="{$config.url}{$config.dirtemp}images/adv2.png" width="200" height="150"></a></p>
+        </div>
+        <!--END RIGHT -->
+        
+        <div class="endsite">
+            <!-- PRODUCT-->
+            <div class="box w988">
+                <h3 class="headbox">Sản phẩm tiêu biểu</h3>
+                 {include file="listsp.html" danhsach=$tieubieu}
+            </div>
+            <!-- END PRODUCT-->
+        </div>
+    </div>
+</div>
+
+<footer>
+	<p>&copy; Copyright 2015 by PHP1506E, T3H Ha noi</p>
+    <p>Design by Nguyễn Giang Nam</p>
+</footer>
+
+</body>
+</html>

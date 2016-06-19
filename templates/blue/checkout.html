@@ -1,0 +1,59 @@
+<div class="box w578">
+    <h3 class="headbox">Thanh toán</h3>
+    {if isset($detail)}
+    <table width="100%" border="0" cellspacing="5" cellpadding="5">
+      <tr>
+        <td>Họ và tên</td>
+        <td>{$detail.hoten}</td>
+      </tr>
+      <tr>
+        <td>Số điện thoại</td>
+        <td>{$detail.dienthoai}</td>
+      </tr>
+      <tr>
+        <td>Địa chỉ</td>
+        <td>{$detail.diachi}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{$detail.email}</td>
+      </tr>
+      <tr>
+        <td>Ngày nhận </td>
+        <td>{$detail.ngaynhan}</td>
+      </tr>
+      <tr>
+        <td>Ghi chú</td>
+        <td>{$detail.ghichu}</td>
+      </tr>
+      <tr>
+        <td>Ngày đặt đơn hàng</td>
+        <td>{$detail.date}</td>
+      </tr>
+      <tr>
+        <td>Tổng tiền</td>
+        <td><h3 style="color:#F00">{$detail.tongtien|number_format} VND</h3></td>
+      </tr>
+    </table>
+    <div style="text-align:center;">
+		<progress style="width:200px; height:25px;"></progress>
+        <p>Đơn hàng đang chuyển sang Ngân Lượng</p>    
+    </div>
+   <script>
+   $(document).ready(function(e) {
+    setTimeout(function(){
+		$('#frmnl').submit();
+	},3000);
+});
+   </script>
+<form id="frmnl" method="post" action="https://www.nganluong.vn/advance_payment.php">
+    <input type=hidden name=receiver value="jacki_tom@yahoo.com" />
+    <input type=hidden name=product value="{$detail.id}" />
+    <input type=hidden name=price value="{$detail.tongtien}" />
+    <input type=hidden name=return_url value="http://localhost/project/" />
+    <input type=hidden name=comments value="Đơn hàng của Vip" />
+</form>
+{else}
+	<p style="text-align:center;padding:20px; font-size:30px; color:#F00; font-weight:bold">Đơn hàng xử lý không thành công</p>
+{/if}
+</div>
